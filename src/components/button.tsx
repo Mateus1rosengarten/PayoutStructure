@@ -5,25 +5,20 @@ interface ButtonComponentProps {
   onClick: () => void;
   label: string;
   customStyle?: object;
-  disabled? : boolean;
 }
 
-const ButtonComponent: React.FC<ButtonComponentProps> = ({ 
-    onClick,
-    label,
-    disabled,
-    customStyle = {},
+const ButtonComponent: React.FC<ButtonComponentProps> = ({
+  onClick,
+  label,
+  customStyle = {},  
 }) => {
   return (
     <Button
       onClick={onClick}
-      color="primary"
       variant="contained"
-      disabled={disabled}
-    
       sx={{
-        letterSpacing : {sm:'0.1rem'},
-         ...customStyle
+        letterSpacing: { sm: "0.1rem" },
+        ...customStyle,
       }}
     >
       {label}

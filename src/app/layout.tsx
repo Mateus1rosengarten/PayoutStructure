@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import "./globals.css";
+import ModalProvider from "@/context/editPayment";
+import { CreatePaymentProvider } from "@/context/createPayment";
 
 // const theme = createTheme();
 
@@ -28,13 +30,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* <ThemeProvider theme={theme}> */}
+      <body>
+        
+        <ModalProvider>
+          <CreatePaymentProvider>
           <CssBaseline />
         {children}
-        {/* </ThemeProvider> */}
+        </CreatePaymentProvider>
+        </ModalProvider>
       </body>
     </html>
   );
