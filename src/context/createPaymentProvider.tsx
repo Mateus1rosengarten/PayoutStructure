@@ -1,20 +1,12 @@
-"use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
-
-interface Payment {
-  name: string;
-  payment_method: string;
-  amount: number;
-  currency: string;
-  description: string;
-  protocol?: string;
-}
+'use client';
+import { Payment } from '@/utils/types';
+import React, { createContext, ReactNode, useContext, useState } from 'react';
 
 interface CreatePaymentContextProps {
   modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  formData: Payment;
-  setFormData: React.Dispatch<React.SetStateAction<Payment>>;
+  formData: Partial<Payment>;
+  setFormData: React.Dispatch<React.SetStateAction<Partial<Payment>>>;
   resetFormData: () => void;
 }
 
@@ -27,22 +19,22 @@ export const CreatePaymentProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-  const [formData, setFormData] = useState<Payment>({
-    name: "",
-    payment_method: "Bank Account",
+  const [formData, setFormData] = useState<Partial<Payment>>({
+    name: '',
+    payment_method: 'Bank Account',
     amount: 0,
-    currency: "USD",
-    description: "",
-    protocol: "",
+    currency: 'USD',
+    description: '',
+    protocol: '',
   });
 
   const resetFormData = () => {
     setFormData({
-      name: "",
-      payment_method: "Bank Account",
+      name: '',
+      payment_method: 'Bank Account',
       amount: 0,
-      currency: "USD",
-      description: "",
+      currency: 'USD',
+      description: '',
     });
   };
 
@@ -59,7 +51,7 @@ export const useCreatePayment = (): CreatePaymentContextProps => {
   const context = useContext(CreatePaymentContext);
   if (!context) {
     throw new Error(
-      "useCreatePayment must be used within a useCreatePaymentProvider"
+      'useCreatePayment must be used within a useCreatePaymentProvider'
     );
   }
   return context;

@@ -1,33 +1,23 @@
-"use client";
-import { Box, Typography } from "@mui/material";
-import ButtonComponent from "@/components/button";
-import ModalCreatePayment from "@/components/modalCreate";
-import ModalEdit from "@/components/modalEdit";
-import PayoutsDashboard from "./payouts";
-import BasicPagination from "@/components/pagination";
-import { useCreatePayment } from "@/context/createPayment";
-import { appTitle, container, customButtonStyle,} from "@/utils/customStyles";
-
+'use client';
+import ModalCreatePayment from '@/components/Modal/ModalCreate';
+import ModalEdit from '@/components/Modal/ModalEdit';
+import ButtonComponent from '@/components/ui/Button';
+import { useCreatePayment } from '@/context/createPaymentProvider';
+import { appTitle, container, customButtonStyle } from '@/utils/customStyles';
+import { Box, Typography } from '@mui/material';
+import PayoutsDashboard from '../components/Table/TableLogic';
 
 export default function Home() {
-  const {setModalOpen} = useCreatePayment();
+  const { setModalOpen } = useCreatePayment();
 
   const handleOnClick = () => {
-    console.log("clicked");
+    console.log('clicked');
     setModalOpen(true);
   };
 
-  
-
   return (
-    <Box
-      sx={container}
-    >
-      <Typography
-        variant="h2"
-        className="text-center"
-        sx={appTitle}
-      >
+    <Box sx={container}>
+      <Typography variant="h2" className="text-center" sx={appTitle}>
         Payment Dashboard
       </Typography>
       <ButtonComponent
@@ -35,7 +25,6 @@ export default function Home() {
         customStyle={customButtonStyle}
         onClick={handleOnClick}
       />
-      {/* <BasicPagination /> */}
       <PayoutsDashboard />
       <ModalCreatePayment />
       <ModalEdit />

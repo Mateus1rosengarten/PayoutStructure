@@ -1,26 +1,12 @@
-import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import "./globals.css";
-import ModalProvider from "@/context/editPayment";
-import { CreatePaymentProvider } from "@/context/createPayment";
-
-// const theme = createTheme();
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import { CreatePaymentProvider } from '@/context/createPaymentProvider';
+import ModalProvider from '@/context/editPaymentProvider';
+import CssBaseline from '@mui/material/CssBaseline';
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Payout dashboard CRUD",
-  description: "Payout dashboard CRUD",
+  title: 'Payout dashboard CRUD',
+  description: 'Payout dashboard CRUD',
 };
 
 export default function RootLayout({
@@ -31,12 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        
         <ModalProvider>
           <CreatePaymentProvider>
-          <CssBaseline />
-        {children}
-        </CreatePaymentProvider>
+            <CssBaseline />
+            {children}
+          </CreatePaymentProvider>
         </ModalProvider>
       </body>
     </html>

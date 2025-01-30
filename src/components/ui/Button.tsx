@@ -1,5 +1,4 @@
-"use client";
-import { Button } from "@mui/material";
+import { Button } from '@mui/material';
 
 interface ButtonComponentProps {
   onClick: () => void;
@@ -10,14 +9,14 @@ interface ButtonComponentProps {
 const ButtonComponent: React.FC<ButtonComponentProps> = ({
   onClick,
   label,
-  customStyle = {},  
+  customStyle = {},
 }) => {
   return (
     <Button
       onClick={onClick}
       variant="contained"
       sx={{
-        letterSpacing: { sm: "0.1rem" },
+        letterSpacing: { sm: '0.1rem' },
         ...customStyle,
       }}
     >

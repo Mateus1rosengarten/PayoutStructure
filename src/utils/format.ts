@@ -1,20 +1,24 @@
 export const formatDate = (date: string | undefined): string => {
-  if (!date) return "";
-  return new Date(date).toLocaleString("pt-BR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
+  if (!date) return '';
+  return new Date(date).toLocaleString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
   });
 };
 
 export const formatPrice = (price: number): string => {
-  if (!price) return "";
-  return String(price).replace(".", ",");
+  if (!price) return '';
+  return String(price).replace('.', ',');
 };
 
 export const validateAmount = (value: string, max: number = 100000): string => {
+  if (!/^\d*$/.test(value)) return value.slice(0, -1);
+  if (value.length > 1 && value.startsWith('0')) {
+    return value.slice(1);
+  }
   return Number(value) > max ? value.slice(0, -1) : value;
 };
 
@@ -23,7 +27,7 @@ export const validateName = (e: React.ChangeEvent<HTMLInputElement>) => {
   const regex = /^[a-zA-Z\s]*$/;
 
   if (!regex.test(value)) {
-    e.target.value = value.replace(/[^a-zA-Z\s]/g, "");
+    e.target.value = value.replace(/[^a-zA-Z\s]/g, '');
   }
 
   if (e.target.value.length > 40) {
