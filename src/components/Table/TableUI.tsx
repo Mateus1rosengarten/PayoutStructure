@@ -31,9 +31,10 @@ const TableUI: React.FC<tableUIProps> = ({
                 .fill(null)
                 .map((_, index) => (
                   <TableRow key={index}>
-                    <TableCell colSpan={5} sx={{ textAlign: 'center' }}>
-                      No data available
-                    </TableCell>
+                    <TableCell
+                      colSpan={5}
+                      sx={{ textAlign: 'center' }}
+                    ></TableCell>
                   </TableRow>
                 ))
             : data.map((item: Payment) => renderItem(item))}

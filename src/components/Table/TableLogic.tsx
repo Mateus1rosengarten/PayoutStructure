@@ -93,18 +93,6 @@ const PayoutsDashboard: React.FC = () => {
     }, delay);
   };
 
-  const renderEmptyRows = () => {
-    const emptyRow = (
-      <TableRow key="empty-row">
-        <TableCell colSpan={5} sx={{ textAlign: 'center' }}>
-          No data available
-        </TableCell>
-      </TableRow>
-    );
-
-    return [emptyRow, emptyRow, emptyRow];
-  };
-
   return (
     <TableUI
       data={payments}
