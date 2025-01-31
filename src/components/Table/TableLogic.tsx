@@ -15,7 +15,8 @@ const PayoutsDashboard: React.FC = () => {
   const [payments, setPayments] = useState<Payment[]>([]);
   const { setModalOpen, setSelectedPayment, trigger, setTrigger } =
     useEditPayment();
-  const { formData } = useCreatePayment();
+  const headers = ['Protocol', 'Date', 'Status', 'Amount', 'Details'];
+
 
   useEffect(() => {
     fetchPayments();
@@ -28,11 +29,11 @@ const PayoutsDashboard: React.FC = () => {
   const renderHeader = () => {
     return (
       <TableRow>
-        <TableCell sx={tableCell}>Protocol</TableCell>
-        <TableCell sx={tableCell}>Date</TableCell>
-        <TableCell sx={tableCell}>Status</TableCell>
-        <TableCell sx={tableCell}>Amount</TableCell>
-        <TableCell sx={tableCell}>Details</TableCell>
+        {headers.map((header) => (
+          <TableCell key={header} sx={tableCell}>
+            {header}
+          </TableCell>
+        ))}
       </TableRow>
     );
   };
