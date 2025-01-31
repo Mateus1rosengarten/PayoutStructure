@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Payout Simulation App ##
+### 📌 Overview ###
+This project is a simulation of a payout application that allows users to:
 
-## Getting Started
+Make payments;
 
-First, run the development server:
+Simulate payment success or failure;
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Edit failed payments;
+
+View all payments with detailed information;
+
+Store and retrieve data from a PostgreSQL database via API endpoints;
+
+### 🚀 Technologies Used ### 
+This project is built using the following technologies:
+
+Next.js for for building the user interface, rendering and routing.
+
+Material UI (MUI) for styling and UI components.
+
+Axios for making API requests.
+
+PostgreSQL for the database.
+
+dotenv for managing environment variables.
+
+date-fns for date manipulation utilities.
+
+### 🔧 Installation & Setup ### 
+Prerequisites:
+
+1)Node.js installed
+
+2)PostgreSQL database set up
+
+Steps to Install and Run:
+
+1)git clone https://github.com/Mateus1rosengarten/PayoutStructure-.git
+
+2)cd payoutcrud
+
+3)npm install
+
+4)npm run dev
+
+### 📡 Folder Structure  ### 
+``` │
+├── app/
+│   └── api/
+│       └── payments/
+│           └── route.ts        # API routes for payments
+│
+├── components/
+│   ├── Modal/                  # Modal components
+│   ├── Table/                  # Table components
+│   └── ui/                     # Additional UI reusablecomponents (buttons, inputs, etc.)
+│
+├── context/
+│   ├── createPaymentProvider.ts # Context for creating payments
+│   └── editPaymentProvider.ts   # Context for editing payments
+│
+├── server/
+│   ├── controllers/            # Business logic for handling requests
+│   ├── models/                 # Database models
+│   └── dbConnection.ts         # Database connection setup
+│
+└── utils/
+    ├── customStyles.ts         # Custom styles for components
+    ├── types.ts               # TypeScript types used across the app
+    ├── variables.ts           # Common variables and constants
+    └── format.ts              # Helper functions for formatting data
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 📡 API Endpoints ### 
+Create Payment
+POST /api/payments Creates a new payment record.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Get All Payments
+GET /api/payments Retrieves all payments with information.
 
-## Learn More
+Get Payment by ID
+GET /api/payments/:protocol Fetches a single payment by its ID and show detailed informaton.
 
-To learn more about Next.js, take a look at the following resources:
+Update Payment
+PUT /api/payments Updates a payment record (useful for editing failed payments)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 👨‍💻 Author ###
+Mateus Rosengarten
