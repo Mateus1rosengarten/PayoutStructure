@@ -56,7 +56,7 @@ const ModalEdit: React.FC = () => {
         throw new Error('Failed to edit payment');
       }
     } catch (error) {
-      console.log('Error');
+      console.error('Error');
     } finally {
       setIsLoading(false);
       setModalOpen(false);
@@ -87,7 +87,7 @@ const ModalEdit: React.FC = () => {
         text={selectedPayment?.protocol}
         buttonLabel="Save Changes"
         extraFields={
-          <Box className="flex gap-x-4">
+          <Box sx={{ display: 'flex', gap: 4 }}>
             <TextField
               label={'Date'}
               disabled={true}

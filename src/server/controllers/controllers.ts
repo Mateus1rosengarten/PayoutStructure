@@ -124,7 +124,7 @@ export const handleUpdatePayment = async (req: NextRequest) => {
 
 export const handleChangeStatus = async (protocol: string) => {
   try {
-    const isSuccess = Math.random() > 0.4;
+    const isSuccess = Math.random() > 0.1;
     const status = isSuccess ? 'Success' : 'Failed';
     const response = await updateStatus(status, protocol);
     return response;

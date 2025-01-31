@@ -19,7 +19,7 @@ const PayoutsDashboard: React.FC = () => {
 
   useEffect(() => {
     fetchPayments();
-  }, [formData]);
+  }, []);
 
   useEffect(() => {
     trigger ? triggerRefresh(fetchPayments) : null;

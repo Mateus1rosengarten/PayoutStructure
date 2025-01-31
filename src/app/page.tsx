@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <Box sx={container}>
-      <Typography variant="h2" className="text-center" sx={appTitle}>
+      <Typography variant="h2" sx={{ ...appTitle, textAlign: 'center' }}>
         Payment Dashboard
       </Typography>
       <ButtonComponent

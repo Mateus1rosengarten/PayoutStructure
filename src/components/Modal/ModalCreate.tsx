@@ -50,7 +50,7 @@ const ModalCreatePayment: React.FC = () => {
         throw new Error('Failed to create payment');
       }
     } catch (error) {
-      console.log('Error');
+      console.error('Error');
     } finally {
       setIsLoading(false);
       handleCloseModal();

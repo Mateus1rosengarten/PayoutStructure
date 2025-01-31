@@ -1,5 +1,5 @@
 import { CreatePaymentProvider } from '@/context/createPaymentProvider';
-import ModalProvider from '@/context/editPaymentProvider';
+import EditPaymentProvider from '@/context/editPaymentProvider';
 import CssBaseline from '@mui/material/CssBaseline';
 import type { Metadata } from 'next';
 import './globals.css';
@@ -17,12 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ModalProvider>
+        <EditPaymentProvider>
           <CreatePaymentProvider>
             <CssBaseline />
             {children}
           </CreatePaymentProvider>
-        </ModalProvider>
+        </EditPaymentProvider>
       </body>
     </html>
   );
