@@ -15,7 +15,6 @@ const PayoutsDashboard: React.FC = () => {
   const [payments, setPayments] = useState<Payment[]>([]);
   const { setModalOpen, setSelectedPayment, trigger, setTrigger } =
     useEditPayment();
-
   const { formData } = useCreatePayment();
 
   useEffect(() => {
@@ -23,9 +22,7 @@ const PayoutsDashboard: React.FC = () => {
   }, [formData]);
 
   useEffect(() => {
-    if (trigger) {
-      triggerRefresh(fetchPayments);
-    }
+    trigger ? triggerRefresh(fetchPayments) : null;
   }, [trigger]);
 
   const renderHeader = () => {
@@ -49,7 +46,7 @@ const PayoutsDashboard: React.FC = () => {
         </TableCell>
         <TableCell sx={getStatus(payment.status)}>{payment.status}</TableCell>
         <TableCell sx={getStatus(payment.status)}>
-          {`${formatPrice(payment.amount) + ''} (${payment.currency})`}{' '}
+          {`${formatPrice(payment.amount) + ''} (${payment.currency})`}
         </TableCell>
         <TableCell>
           <IconButton onClick={() => handleOpenEditModal(payment.protocol)}>
@@ -63,7 +60,6 @@ const PayoutsDashboard: React.FC = () => {
   const handleOpenEditModal = async (protocol: string) => {
     try {
       const response = await axios.get(`${URL}?protocol=${protocol}`);
-
       setSelectedPayment(response.data.payment);
       setModalOpen(true);
     } catch (error) {
@@ -74,11 +70,12 @@ const PayoutsDashboard: React.FC = () => {
   const fetchPayments = async () => {
     try {
       const response = await axios.get(URL);
-      const formattedPayment = response.data.payments.map((payment: any) => ({
-        ...payment,
-        payment_date: format(new Date(payment.payment_date), 'dd/MM/yyyy'),
-      }));
-
+      const formattedPayment = response.data.payments.map(
+        (payment: Payment) => ({
+          ...payment,
+          payment_date: format(new Date(payment.payment_date), 'dd/MM/yyyy'),
+        })
+      );
       setPayments(formattedPayment);
     } catch (error) {
       console.error('Error fetching payments:', error);

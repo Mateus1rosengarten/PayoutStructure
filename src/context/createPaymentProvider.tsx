@@ -1,12 +1,18 @@
 'use client';
 import { Payment } from '@/utils/types';
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useContext,
+  useState,
+} from 'react';
 
 interface CreatePaymentContextProps {
   modalOpen: boolean;
-  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalOpen: Dispatch<React.SetStateAction<boolean>>;
   formData: Partial<Payment>;
-  setFormData: React.Dispatch<React.SetStateAction<Partial<Payment>>>;
+  setFormData: Dispatch<React.SetStateAction<Partial<Payment>>>;
   resetFormData: () => void;
 }
 
@@ -18,7 +24,6 @@ export const CreatePaymentProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-
   const [formData, setFormData] = useState<Partial<Payment>>({
     name: '',
     payment_method: 'Bank Account',

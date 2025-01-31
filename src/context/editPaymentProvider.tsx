@@ -1,14 +1,20 @@
 'use client';
 import { Payment } from '@/utils/types';
-import { createContext, ReactNode, useContext, useState } from 'react';
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useContext,
+  useState,
+} from 'react';
 
 interface EditPaymentContextProps {
   modalOpen: boolean;
-  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalOpen: Dispatch<React.SetStateAction<boolean>>;
   selectedPayment: Payment | null;
   setSelectedPayment: (payment: Payment | null) => void;
   trigger: boolean;
-  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+  setTrigger: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const EditPaymentContext = createContext<

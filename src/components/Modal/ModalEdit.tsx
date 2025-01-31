@@ -50,8 +50,11 @@ const ModalEdit: React.FC = () => {
       const response = await axios.put(URL, {
         payment: { ...formData },
       });
-
-      setAlertOpen(true);
+      if (response.status === 200) {
+        setAlertOpen(true);
+      } else {
+        throw new Error('Failed to edit payment');
+      }
     } catch (error) {
       console.log('Error');
     } finally {

@@ -11,7 +11,6 @@ export default function Home() {
   const { setModalOpen } = useCreatePayment();
 
   const handleOnClick = () => {
-    console.log('clicked');
     setModalOpen(true);
   };
 

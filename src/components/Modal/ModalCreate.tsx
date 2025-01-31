@@ -1,5 +1,6 @@
 'use client';
 import { useCreatePayment } from '@/context/createPaymentProvider';
+import { useEditPayment } from '@/context/editPaymentProvider';
 import { URL } from '@/utils/variables';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -16,11 +17,13 @@ const ModalCreatePayment: React.FC = () => {
     handleDropDownChange,
     handleCloseAlert,
   } = useModalLogic();
+
   const { modalOpen, setModalOpen, formData, resetFormData } =
     useCreatePayment();
-
+  const { trigger, setTrigger } = useEditPayment();
   const isFormValid =
     !!formData.name && !!formData.amount && formData.amount > 0;
+
   useEffect(() => {
     resetFormData();
   }, [modalOpen]);
@@ -47,10 +50,11 @@ const ModalCreatePayment: React.FC = () => {
         throw new Error('Failed to create payment');
       }
     } catch (error) {
-      console.log('Error ');
+      console.log('Error');
     } finally {
       setIsLoading(false);
       handleCloseModal();
+      setTrigger(!trigger);
     }
   };
 

@@ -32,12 +32,12 @@ interface PaymentFormProps {
   formData: any;
   handleTextFieldChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleDropDownChange: (e: any, id: string) => void;
-  extraFields?: ReactNode;
   isLoading: boolean;
   cantEditFields?: boolean;
   buttonLabel: string;
   isFormValid: boolean;
   handleSubmit: () => void;
+  extraFields?: ReactNode;
 }
 
 const PaymentForm: React.FC<PaymentFormProps> = ({

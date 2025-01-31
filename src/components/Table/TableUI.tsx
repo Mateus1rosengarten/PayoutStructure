@@ -11,7 +11,7 @@ import {
 import { ReactNode } from 'react';
 
 interface tableUIProps {
-  data: any[];
+  data: Payment[];
   renderHeader: () => ReactNode;
   renderItem: (item: Payment) => ReactNode;
 }
@@ -27,7 +27,7 @@ const TableUI: React.FC<tableUIProps> = ({
         <TableHead>{renderHeader()}</TableHead>
         <TableBody>
           {data.length === 0
-            ? Array(3)
+            ? Array(5)
                 .fill(null)
                 .map((_, index) => (
                   <TableRow key={index}>
