@@ -54,7 +54,7 @@ const ModalCreatePayment: React.FC = () => {
     } finally {
       setIsLoading(false);
       handleCloseModal();
-      setTrigger(!trigger);
+      setTrigger((prev) => !prev);
     }
   };
 

@@ -1,4 +1,4 @@
-import { useCreatePayment } from '@/context/createPaymentProvider';
+'use client';
 import { useEditPayment } from '@/context/editPaymentProvider';
 import { getStatus, tableCell, tableProtocol } from '@/utils/customStyles';
 import { formatPrice } from '@/utils/format';
@@ -15,8 +15,8 @@ const PayoutsDashboard: React.FC = () => {
   const [payments, setPayments] = useState<Payment[]>([]);
   const { setModalOpen, setSelectedPayment, trigger, setTrigger } =
     useEditPayment();
-  const headers = ['Protocol', 'Date', 'Status', 'Amount', 'Details'];
 
+  const headers = ['Protocol', 'Date', 'Status', 'Amount', 'Details'];
 
   useEffect(() => {
     fetchPayments();
@@ -81,7 +81,7 @@ const PayoutsDashboard: React.FC = () => {
     } catch (error) {
       console.error('Error fetching payments:', error);
     } finally {
-      setTrigger(!trigger);
+      setTrigger((prev) => !prev);
     }
   };
 

@@ -8,7 +8,7 @@ import {
 } from '../models/models';
 
 const generateProtocol = () => {
-  const protocol = `P${Math.floor(Math.random() * 100000)}`;
+  const protocol = `P${Date.now()}`;
   return protocol;
 };
 

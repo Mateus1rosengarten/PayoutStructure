@@ -1,3 +1,4 @@
+'use client';
 import { useCreatePayment } from '@/context/createPaymentProvider';
 import { validateAmount } from '@/utils/format';
 import { SelectChangeEvent } from '@mui/material';

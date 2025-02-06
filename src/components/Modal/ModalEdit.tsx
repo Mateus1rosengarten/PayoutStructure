@@ -1,3 +1,4 @@
+'use client';
 import { useEditPayment } from '@/context/editPaymentProvider';
 import { formatDate } from '@/utils/format';
 import { URL } from '@/utils/variables';
@@ -60,7 +61,7 @@ const ModalEdit: React.FC = () => {
     } finally {
       setIsLoading(false);
       setModalOpen(false);
-      setTrigger(!trigger);
+      setTrigger((prev) => !prev);
     }
   };
 

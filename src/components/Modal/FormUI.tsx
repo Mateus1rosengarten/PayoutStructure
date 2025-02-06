@@ -128,6 +128,9 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
             multiline
             disabled={disabled}
             onChange={handleTextFieldChange}
+            // slotProps={{
+            //   {MaxLength}
+            // }}
             inputProps={{
               maxLength: 120,
             }}
