@@ -110,7 +110,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
               sx={textFieldBox}
               disabled={disabled}
               onChange={handleTextFieldChange}
-              value={formData.amount}
+              value={formData.amount ?? ''}
             />
             <DropDown
               id="currency"
@@ -128,9 +128,6 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
             multiline
             disabled={disabled}
             onChange={handleTextFieldChange}
-            // slotProps={{
-            //   {MaxLength}
-            // }}
             inputProps={{
               maxLength: 120,
             }}

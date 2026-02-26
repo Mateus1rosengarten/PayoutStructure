@@ -93,7 +93,7 @@ const ModalEdit: React.FC = () => {
               label={'Date'}
               disabled={true}
               sx={{ flex: 2 }}
-              value={formatDate(selectedPayment?.payment_date) + '(GMT)'}
+              value={formatDate(selectedPayment?.date) + '(GMT)'}
             />
 
             <TextField

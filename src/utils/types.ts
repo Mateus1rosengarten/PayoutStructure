@@ -1,6 +1,6 @@
 export interface Payment {
   protocol: string;
-  payment_date: string;
+  date: string;
   status: string;
   amount: number;
   currency: string;

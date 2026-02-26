@@ -4,9 +4,9 @@ import pool from '../dbInstance';
 export const getAllPayments = async (): Promise<Payment[]> => {
   try {
     const query = `
-    SELECT protocol, payment_date, status, amount ,currency
+    SELECT protocol, date, status, amount ,currency
     FROM payments
-    ORDER BY payment_date DESC;
+    ORDER BY date DESC;
   `;
     const { rows } = await pool.query(query);
     return rows;
@@ -36,7 +36,7 @@ export const insertPayment = async (
 ): Promise<Payment | null> => {
   try {
     const query = `
-    INSERT INTO payments(protocol,name, payment_method,amount,currency,description,payment_date,status)
+    INSERT INTO payments(protocol,name, payment_method,amount,currency,description,date,status)
     VALUES ($1, $2, $3, $4, $5, $6, $7 ,$8)
     RETURNING *
     `;
@@ -47,7 +47,7 @@ export const insertPayment = async (
       payment.amount,
       payment.currency,
       payment.description,
-      payment.payment_date,
+      payment.date,
       payment.status,
     ]);
     return rows[0];

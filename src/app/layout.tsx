@@ -1,28 +1,30 @@
+'use client';
+
+import { CacheProvider } from '@emotion/react';
+
 import { CreatePaymentProvider } from '@/context/createPaymentProvider';
 import EditPaymentProvider from '@/context/editPaymentProvider';
 import CssBaseline from '@mui/material/CssBaseline';
-import type { Metadata } from 'next';
-import './globals.css';
+import createEmotionCache from '../../emotionCache';
 
-export const metadata: Metadata = {
-  title: 'Payout dashboard CRUD',
-  description: 'Payout dashboard CRUD',
-};
+const clientSideEmotionCache = createEmotionCache();
 
-export default function RootLayout({
+export default function RootLayoutClient({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body>
-        <EditPaymentProvider>
-          <CreatePaymentProvider>
-            <CssBaseline />
-            {children}
-          </CreatePaymentProvider>
-        </EditPaymentProvider>
+        <CacheProvider value={clientSideEmotionCache}>
+          <EditPaymentProvider>
+            <CreatePaymentProvider>
+              <CssBaseline />
+              {children}
+            </CreatePaymentProvider>
+          </EditPaymentProvider>
+        </CacheProvider>
       </body>
     </html>
   );

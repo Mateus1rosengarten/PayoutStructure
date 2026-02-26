@@ -70,11 +70,11 @@ export const handleCreatePayment = async (req: NextRequest) => {
         { status: 400 }
       );
     }
-    const payment_date = new Date().toISOString();
+    const date = new Date().toISOString();
     const protocol = generateProtocol();
     const paymentObject = {
       ...payment,
-      payment_date,
+      date,
       status: 'waiting',
       protocol,
     };

@@ -42,9 +42,7 @@ const PayoutsDashboard: React.FC = () => {
     return (
       <TableRow key={payment.protocol}>
         <TableCell sx={tableProtocol}>{payment.protocol}</TableCell>
-        <TableCell sx={getStatus(payment.status)}>
-          {payment.payment_date}
-        </TableCell>
+        <TableCell sx={getStatus(payment.status)}>{payment.date}</TableCell>
         <TableCell sx={getStatus(payment.status)}>{payment.status}</TableCell>
         <TableCell sx={getStatus(payment.status)}>
           {`${formatPrice(payment.amount) + ''} (${payment.currency})`}
@@ -74,7 +72,7 @@ const PayoutsDashboard: React.FC = () => {
       const formattedPayment = response.data.payments.map(
         (payment: Payment) => ({
           ...payment,
-          payment_date: format(new Date(payment.payment_date), 'dd/MM/yyyy'),
+          date: format(new Date(payment.date), 'dd/MM/yyyy'),
         })
       );
       setPayments(formattedPayment);
