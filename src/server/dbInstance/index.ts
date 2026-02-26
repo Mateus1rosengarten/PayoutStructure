@@ -1,23 +1,33 @@
-import dotenv from 'dotenv';
 import { Pool } from 'pg';
 
-dotenv.config();
+declare global {
+  var pgPool: Pool | undefined;
+}
 
-const pool = new Pool({
-  user: process.env.DB_USER, // agora vem do .env
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-  port: Number(process.env.DB_PORT), // sempre converta para number
-});
+const pool =
+  global.pgPool ||
+  new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASS,
+    port: Number(process.env.DB_PORT),
+    ssl:
+      process.env.NODE_ENV === 'production'
+        ? { rejectUnauthorized: false }
+        : false,
+  });
+
+if (process.env.NODE_ENV !== 'production') {
+  global.pgPool = pool;
+}
 
 pool.on('connect', () => {
   console.log('Connected to the DB');
 });
 
 pool.on('error', (error: Error) => {
-  console.log('Error in Connecting with DB', error);
-  process.exit(-1);
+  console.error('Error in Connecting with DB', error);
 });
 
 export default pool;

@@ -5,6 +5,8 @@ import {
   handleUpdatePayment,
 } from '@/server/controllers/controllers';
 import { NextRequest } from 'next/server';
+export const runtime = 'nodejs';
+export const maxDuration = 10;
 
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
