@@ -4,11 +4,11 @@ import { Pool } from 'pg';
 dotenv.config();
 
 const pool = new Pool({
-  user: 'mateusrosengarten',
-  host: 'localhost',
-  database: 'payoutstructure',
-  password: '1131',
-  port: 5432,
+  user: process.env.DB_USER, // agora vem do .env
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  port: Number(process.env.DB_PORT), // sempre converta para number
 });
 
 pool.on('connect', () => {
