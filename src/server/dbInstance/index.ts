@@ -22,12 +22,4 @@ if (process.env.NODE_ENV !== 'production') {
   global.pgPool = pool;
 }
 
-pool.on('connect', () => {
-  console.log('Connected to the DB');
-});
-
-pool.on('error', (error: Error) => {
-  console.error('Error in Connecting with DB', error);
-});
-
 export default pool;
