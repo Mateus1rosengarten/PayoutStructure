@@ -78,7 +78,7 @@ export const handleCreatePayment = async (req: NextRequest) => {
       status: 'waiting',
       protocol,
     };
-
+    console.log('Payment object before insert:', paymentObject);
     const response = await insertPayment(paymentObject);
 
     changeStatusAfter2Seconds(paymentObject.protocol);
